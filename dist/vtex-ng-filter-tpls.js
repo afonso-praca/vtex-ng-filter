@@ -345,7 +345,7 @@
 angular.module("vtexNgFilter").run(function($templateCache) {   'use strict';
 
   $templateCache.put('vtex-ng-filter-button.html',
-    "<a class=\"btn\" href=\"javascript:void(0);\" ng-click=\"openFilters()\"><i class=\"icon-filter\" ng-class=\"{'icon-blue': filters.getAppliedItems().length > 0}\"></i>&nbsp; <span translate=\"\">listing.filters</span> <span class=\"badge badge-info badge-corner\" data-ng-show=\"filters.getAppliedItems().length > 0\">{{filters.getAppliedItems().length}}</span></a>"
+    "<button type=\"button\" class=\"btn btn-default filter-inner-btn pull-left\"><i class=\"fa fa-filter fa-sm\"></i> <span class=\"badge badge-info badge-corner\" ng-show=\"filters.getAppliedItems().length > 0\">{{ filters.getAppliedItems().length }}</span></button>"
   );
 
 
