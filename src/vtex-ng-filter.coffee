@@ -8,10 +8,11 @@ angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
   .factory "Filter", ($translate) ->
     class Filter
       constructor: (filter) ->
-        for k, v of filter
-          @[k] = v
+        @[k] = v for k, v of filter
 
         @selectedCount = 0
+
+        item.url = item.name for item in @items when !item.url?
 
         if @type is 'date'
           @dateObjectCache = {}

@@ -22,12 +22,19 @@
         this.getSelectedItems = __bind(this.getSelectedItems, this);
         this.setSelectedItems = __bind(this.setSelectedItems, this);
         this.updateSelectedCount = __bind(this.updateSelectedCount, this);
-        var k, v;
+        var item, k, v, _i, _len, _ref;
         for (k in filter) {
           v = filter[k];
           this[k] = v;
         }
         this.selectedCount = 0;
+        _ref = this.items;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          item = _ref[_i];
+          if (item.url == null) {
+            item.url = item.name;
+          }
+        }
         if (this.type === 'date') {
           this.dateObjectCache = {};
           this.date = {};
