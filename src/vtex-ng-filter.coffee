@@ -12,7 +12,7 @@ angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
 
         @selectedCount = 0
 
-        item.url = item.name for item in @items when !item.url?
+        item.url = item.name for item in @items when !item.url? and @type isnt 'date'
 
         if @type is 'date'
           @dateObjectCache = {}
@@ -58,7 +58,7 @@ angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
 
       setSelectedItems: (itemsAsSearchParameter) =>
         if @type is 'date'
-          items = itemsAsSearchParameter.replace(@name + ':[', '').replace(']', '').split(' TO ')
+          items = itemsAsSearchParameter.replace('[', '').replace(']', '').split(' TO ')
           date =
             from: new Date(items[0])
             to: new Date(items[1])
@@ -74,7 +74,7 @@ angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
       getSelectedItems: =>
         if @type is 'date'
           if @date.from and @date.to
-            url = "#{@name}:[#{moment(@date.from).startOf('day').toISOString()} TO #{moment(@date.to).endOf('day').toISOString()}]"
+            url = "[#{moment(@date.from).startOf('day').toISOString()} TO #{moment(@date.to).endOf('day').toISOString()}]"
             @dateObjectCache[url] or=
               name: @dateRangeLabel()
               url: url

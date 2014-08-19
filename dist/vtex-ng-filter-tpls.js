@@ -31,7 +31,7 @@
         _ref = this.items;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          if (item.url == null) {
+          if ((item.url == null) && this.type !== 'date') {
             item.url = item.name;
           }
         }
@@ -116,7 +116,7 @@
       Filter.prototype.setSelectedItems = function(itemsAsSearchParameter) {
         var date, item, items, _i, _len, _ref, _ref1;
         if (this.type === 'date') {
-          items = itemsAsSearchParameter.replace(this.name + ':[', '').replace(']', '').split(' TO ');
+          items = itemsAsSearchParameter.replace('[', '').replace(']', '').split(' TO ');
           date = {
             from: new Date(items[0]),
             to: new Date(items[1])
@@ -140,7 +140,7 @@
         var item, url, _base, _i, _len, _ref, _results;
         if (this.type === 'date') {
           if (this.date.from && this.date.to) {
-            url = "" + this.name + ":[" + (moment(this.date.from).startOf('day').toISOString()) + " TO " + (moment(this.date.to).endOf('day').toISOString()) + "]";
+            url = "[" + (moment(this.date.from).startOf('day').toISOString()) + " TO " + (moment(this.date.to).endOf('day').toISOString()) + "]";
             (_base = this.dateObjectCache)[url] || (_base[url] = {
               name: this.dateRangeLabel(),
               url: url
