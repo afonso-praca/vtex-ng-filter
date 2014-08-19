@@ -1,4 +1,4 @@
-/*! vtex-ng-filter - v0.3.1 - 2014-08-18 */
+/*! vtex-ng-filter - v0.3.1 - 2014-08-19 */
 (function() {
   var config, moreOptionsShowFilters, openFilters,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
@@ -345,7 +345,7 @@
 angular.module("vtexNgFilter").run(function($templateCache) {   'use strict';
 
   $templateCache.put('vtex-ng-filter-button.html',
-    "<button type=\"button\" class=\"btn btn-default filter-inner-btn pull-left\"><i class=\"fa fa-filter fa-sm\"></i> <span class=\"badge badge-info badge-corner\" ng-show=\"filters.getAppliedItems().length > 0\">{{ filters.getAppliedItems().length }}</span></button>"
+    "<button type=\"button\" class=\"btn btn-default filter-inner-btn pull-left\"><i class=\"fa fa-filter fa-sm\"></i> <span class=\"badge badge-corner badge-count\" ng-show=\"filters.getAppliedItems().length > 0\">{{ filters.getAppliedItems().length }}</span></button>"
   );
 
 
