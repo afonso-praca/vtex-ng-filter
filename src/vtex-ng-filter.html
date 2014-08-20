@@ -38,18 +38,14 @@
                  If 6 items, show all 6.
                  If 7 items, show 5 and button to show more. -->
             <li ng-repeat="item in filter.items" ng-show="(filter.items.length <= 6) || ($index < 5) || moreOptionsShowFilters[filter.rangeUrlTemplate]">
-              <div class="checkbox"><label class="" ng-if="filter.type == 'multiple'">
-                <input type="checkbox" name="{{filter.name}}" ng-model="item.selected" ng-change="filter.updateSelectedCount()">
-                                <span>
-                                    {{ item.name }} {{ item.quantity ? '(' + item.quantity + ')' : '' }}
-                                </span>
-              </label></div>
-              <div class="checkbox"><label class="" ng-if="filter.type == 'single'">
-                <input type="radio" name="{{filter.name}}" ng-model="filter.selectedItem" ng-value="item">
-                                <span>
-                                    {{ item.name }} {{ item.quantity ? '(' + item.quantity + ')' : '' }}
-                                </span>
-              </label></div>
+              <label class="checkbox" ng-if="filter.type == 'multiple'">
+                <input type="checkbox" name="{{ filter.name }}" ng-model="item.selected" ng-change="filter.updateSelectedCount()">
+                <span class="filter-list-item">{{ item.name }} {{ item.quantity ? '(' + item.quantity + ')' : '' }}</span>
+              </label>
+              <label class="checkbox" ng-if="filter.type == 'single'">
+                <input type="radio" name="{{ filter.name }}" ng-model="filter.selectedItem" ng-value="item">
+                <span>{{ item.name }} {{ item.quantity ? '(' + item.quantity + ')' : '' }}</span>
+              </label>
             </li>
           </ul>
           <a href="javascript:void(0)" ng-click="moreOptionsShowFilters[filter.rangeUrlTemplate] = true" ng-show="filter.items.length > 6 &amp;&amp; !moreOptionsShowFilters[filter.rangeUrlTemplate]" class="text-muted">{{ 'filters.moreOptionsShow' | translate}} ({{ filter.items.length }})</a>
@@ -60,6 +56,4 @@
       </div>
     </accordion-group>
   </accordion>
-
-
 </div>

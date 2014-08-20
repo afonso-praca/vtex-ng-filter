@@ -1,4 +1,5 @@
-<button type="button" class="btn btn-default filter-inner-btn pull-left">
+<button type="button" class="btn filter-inner-btn pull-left"
+        ng-class="{ 'btn-default': filters.getAppliedItems().length <= 0, 'btn-primary': filters.getAppliedItems().length > 0 }">
   <i class="fa fa-filter fa-sm"></i>
   <span class="badge badge-corner badge-count" ng-show="filters.getAppliedItems().length > 0">{{ filters.getAppliedItems().length }}</span>
 </button>
