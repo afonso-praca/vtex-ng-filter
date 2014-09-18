@@ -1,4 +1,4 @@
-/*! vtex-ng-filter - v0.3.1 - 2014-09-10 */
+/*! vtex-ng-filter - v0.3.1 - 2014-09-18 */
 (function() {
   var config, moreOptionsShowFilters, openFilters,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
@@ -352,7 +352,7 @@
 angular.module("vtexNgFilter").run(function($templateCache) {   'use strict';
 
   $templateCache.put('vtex-ng-filter-button.html',
-    "<button type=\"button\" class=\"btn filter-inner-btn btn-lg pull-left\" ng-class=\"{ 'btn-default': filters.getAppliedItems().length <= 0, 'btn-primary': filters.getAppliedItems().length > 0 }\"><i class=\"fa fa-filter fa-sm\"></i> <span translate=\"\">filter</span> <span class=\"badge badge-corner badge-count\" ng-show=\"filters.getAppliedItems().length > 0\">{{ filters.getAppliedItems().length }}</span></button>"
+    "<div class=\"filter-btn-container\"><button type=\"button\" class=\"btn btn-default filter-inner-btn btn-lg pull-left\"><i class=\"fa fa-filter filter-icon\" ng-class=\"{ 'enabled': filters.getAppliedItems().length > 0 }\"></i> <span translate=\"\">filters.filters</span> <span class=\"badge badge-corner badge-count\" ng-show=\"filters.getAppliedItems().length > 0\">{{ filters.getAppliedItems().length }}</span></button></div>"
   );
 
 
