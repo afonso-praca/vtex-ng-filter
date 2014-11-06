@@ -5,7 +5,7 @@ openFilters = {}
 moreOptionsShowFilters = {}
 
 angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
-  .factory "Filter", ($translate) ->
+  .factory "Filter", ($filter) ->
     class Filter
       constructor: (filter) ->
         @[k] = v for k, v of filter
@@ -28,16 +28,16 @@ angular.module('vtexNgFilter', ["ui.bootstrap.accordion"])
           @dateRangeLabel = =>
             if @date.from and @date.to
               if moment(@date.from).startOf('day').isSame(moment().startOf('day'))
-                  $translate('listing.dates.today')
+                  $filter("translate")('listing.dates.today')
               else if moment(@date.from).isSame(moment().add('d', -1).startOf('day')) and
                 moment(@date.to).isSame(moment().add('d', -1).endOf('day'))
-                  $translate('listing.dates.yesterday')
+                  $filter("translate")('listing.dates.yesterday')
               else if moment(@date.to).startOf('day').isSame(moment().startOf('day'))
-                "#{moment(@date.from).add('hours', moment().hours()).fromNow()} #{$translate('listing.dates.untilToday')}"
+                "#{moment(@date.from).add('hours', moment().hours()).fromNow()} #{$filter("translate")('listing.dates.untilToday')}"
               else
-                "#{moment(@date.from).add('hours', moment().hours()).fromNow()} #{$translate('listing.dates.until')} #{moment(@date.to).add('hours', moment().hours()).fromNow()}"
+                "#{moment(@date.from).add('hours', moment().hours()).fromNow()} #{$filter("translate")('listing.dates.until')} #{moment(@date.to).add('hours', moment().hours()).fromNow()}"
             else
-              $translate('listing.dates.noRangeSelected')
+              $filter("translate")('listing.dates.noRangeSelected')
 
         @updateSelectedCount()
 
